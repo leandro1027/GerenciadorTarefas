@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppConvidados</string>
+    <string name="app_name">Gerenciador de Tarefas</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Leandro</string>
@@ -11,12 +11,12 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="action_settings2" />
-    <string name="todos_os_convidados">Gerenciador de Tarefasss\n</string>
-    <string name="nome">nome</string>
-    <string name="presença">Presença\n</string>
-    <string name="presente">Presente</string>
-    <string name="ausente">Ausente</string>
+    <string name="todos_os_convidados">Gerenciador de Tarefas\n</string>
+    <string name="nome">Tarefa</string>
+    <string name="presença">Você realizou a tarefa?\n</string>
+    <string name="presente">Tarefa feita</string>
+    <string name="ausente">Tarefa a fazer</string>
     <string name="enviar">enviar</string>
-    <string name="menu_present">Presentes</string>
-    <string name="menu_absent">Ausentes</string>
+    <string name="menu_present">Tarefas feitas</string>
+    <string name="menu_absent">Tarefas não feitas</string>
 </resources>
