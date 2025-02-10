@@ -19,4 +19,6 @@
     <string name="enviar">enviar</string>
     <string name="menu_present">Tarefas feitas</string>
     <string name="menu_absent">Tarefas não feitas</string>
+    <string name="digite_a_descricao">Digite a descrição</string>
+    <string name="descricao_tarefa">Descrição da tarefa</string>
 </resources>
