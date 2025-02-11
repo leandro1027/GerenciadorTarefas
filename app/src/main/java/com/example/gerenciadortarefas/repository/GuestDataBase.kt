@@ -19,7 +19,6 @@ class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VE
             "CREATE TABLE " + DataBaseConstants.GUEST.TABLE_NAME + " (" +
                     DataBaseConstants.GUEST.COLUMNS.ID + " integer primary key autoincrement, " +
                     DataBaseConstants.GUEST.COLUMNS.NAME + " text, " +
-                    DataBaseConstants.GUEST.COLUMNS.DESCRICAO + " text, " +
                     DataBaseConstants.GUEST.COLUMNS.PRESENCE + " integer);"
         )
     }
