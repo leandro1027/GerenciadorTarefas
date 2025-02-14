@@ -14,7 +14,7 @@
         /> <!-- Adicione um texto padrão ou remova para definir programaticamente -->
 
     <TextView
-        android:id="@+id/edit_text_descricao"
+        android:id="@+id/text_descricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
