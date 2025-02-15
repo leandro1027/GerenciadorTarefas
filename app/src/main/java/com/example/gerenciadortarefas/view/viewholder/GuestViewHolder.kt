@@ -12,6 +12,7 @@ class GuestViewHolder(private val bind: RowGuestBinding, private val listener: O
 //        itemView.findViewById<TextView>(R.id.text_name).text = guest.name
         //Utilizando viewBinding
         bind.textName.text = guest.name
+        bind.textDescricao.text = guest.descricao
         
 
         bind.textName.setOnClickListener{
