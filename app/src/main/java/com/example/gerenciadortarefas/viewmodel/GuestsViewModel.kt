@@ -2,32 +2,30 @@ package com.example.gerenciadortarefas.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.gerenciadortarefas.model.GuestModel
 import com.example.gerenciadortarefas.repository.GuestRepository
 
 class GuestsViewModel(application: Application) : AndroidViewModel(application) {
 
-    //private lateinit var repository: GuestRepository
-    private val repository = GuestRepository.getInstance(application.applicationContext)
+    private val repository = GuestRepository(application)
 
-    private val listAllGuests = MutableLiveData<List<GuestModel>>()
-    val guests: LiveData<List<GuestModel>> = listAllGuests
+    val guests = MutableLiveData<List<GuestModel>>()
 
     fun getAll() {
-        listAllGuests.value = repository.getAll()
+        guests.value = repository.getAll()
     }
 
     fun getPresent() {
-        listAllGuests.value = repository.getPresence()
+        guests.value = repository.getPresence()
     }
 
     fun getAbsent() {
-        listAllGuests.value = repository.getAbsent()
+        guests.value = repository.getAbsent()
     }
 
     fun delete(id: Int) {
         repository.delete(id)
+        getAll()
     }
 }

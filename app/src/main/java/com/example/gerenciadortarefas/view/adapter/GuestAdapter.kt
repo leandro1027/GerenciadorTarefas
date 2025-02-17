@@ -9,9 +9,9 @@ import com.example.gerenciadortarefas.model.GuestModel
 import com.example.gerenciadortarefas.view.listener.OnGuestListener
 import com.example.gerenciadortarefas.view.viewholder.GuestViewHolder
 
-class GuestsAdapter: RecyclerView.Adapter<GuestViewHolder>() {
-    private var guestList: List<GuestModel> = listOf()
-    private lateinit var listener : OnGuestListener
+class GuestsAdapter : RecyclerView.Adapter<GuestViewHolder>() {
+    private var guestList: MutableList<GuestModel> = mutableListOf()
+    private lateinit var listener: OnGuestListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuestViewHolder {
         val item = RowGuestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,17 +23,17 @@ class GuestsAdapter: RecyclerView.Adapter<GuestViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return guestList.count()
+        return guestList.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateGuests(list: List<GuestModel>){
-        guestList = list
-        //Atualizar
+    fun updateGuests(list: List<GuestModel>) {
+        guestList.clear()
+        guestList.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun attachListener(guestListener: OnGuestListener){
+    fun attachListener(guestListener: OnGuestListener) {
         listener = guestListener
     }
 }

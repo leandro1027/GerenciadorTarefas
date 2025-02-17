@@ -10,15 +10,15 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.gerenciadortarefas.R
-import com.example.gerenciadortarefas.constants.DataBaseConstants
+import com.example.gerenciadortarefas.constants.nDataBaseConstants
 import com.example.gerenciadortarefas.databinding.ActivityGuestFormBinding
 import com.example.gerenciadortarefas.model.GuestModel
 import com.example.gerenciadortarefas.viewmodel.GuestFormViewModel
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding : ActivityGuestFormBinding
-    private lateinit var viewModel : GuestFormViewModel
+    private lateinit var binding: ActivityGuestFormBinding
+    private lateinit var viewModel: GuestFormViewModel
 
     private var guestId = 0
 
@@ -27,6 +27,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         enableEdgeToEdge()
         binding = ActivityGuestFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -40,44 +41,29 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
         observe()
         loadData()
-
     }
 
     override fun onClick(view: View) {
-        if(view.id == R.id.button_enviar){
+        if (view.id == R.id.button_enviar) {
             val name = binding.editTextName.text.toString()
             val presence = binding.radioPresent.isChecked
-            val descricao = binding.editTextName.text.toString()
+            val descricao = binding.textDescricao.text.toString()
 
             val model = GuestModel(guestId, name, presence, descricao)
             viewModel.save(model)
-            finish()
         }
     }
 
-    private fun observe(){
-        viewModel.guest.observe(this, Observer {
-            binding.editTextName.setText(it.name)
-            binding.textDescricao.setText(it.descricao)
-            if(it.presence){
-                binding.radioPresent.isChecked = true
-            }else{
-                binding.radioAbsent.isChecked = true
-            }
-        })
-
-        viewModel.saveGuest.observe(this, Observer {
-            if(it.sucess){
-                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                finish()
-            }
-        })
+    private fun observe() {
+        viewModel.saveGuest.observe(this) {
+            if (it) finish()
+        }
     }
 
     private fun loadData() {
         val bundle = intent.extras
-        if(bundle != null){
-            guestId = bundle.getInt(DataBaseConstants.GUEST.ID)
+        if (bundle != null) {
+            guestId = bundle.getInt(nDataBaseConstants.GUEST.ID)
             viewModel.get(guestId)
         }
     }

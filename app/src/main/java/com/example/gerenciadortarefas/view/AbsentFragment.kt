@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gerenciadortarefas.constants.DataBaseConstants
+import com.example.gerenciadortarefas.constants.nDataBaseConstants
 import com.example.gerenciadortarefas.databinding.FragmentAbsentBinding
 import com.example.gerenciadortarefas.view.adapter.GuestsAdapter
 import com.example.gerenciadortarefas.view.listener.OnGuestListener
@@ -24,17 +24,17 @@ class AbsentFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewModel = ViewModelProvider(this).get(GuestsViewModel::class.java)
+
         _binding = FragmentAbsentBinding.inflate(inflater, container, false)
 
         binding.recyclerGuests.layoutManager = LinearLayoutManager(context)
-
         binding.recyclerGuests.adapter = adapter
 
         val listener = object : OnGuestListener {
             override fun onClick(id: Int) {
                 val intent = Intent(context, GuestFormActivity::class.java)
                 val bundle = Bundle()
-                bundle.putInt(DataBaseConstants.GUEST.ID, id)
+                bundle.putInt(nDataBaseConstants.GUEST.ID, id)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -46,7 +46,6 @@ class AbsentFragment : Fragment() {
         }
 
         adapter.attachListener(listener)
-        //viewModel.getAll()
         observe()
         return binding.root
     }
