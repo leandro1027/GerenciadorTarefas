@@ -1,6 +1,6 @@
 package com.example.gerenciadortarefas.constants
 
-class DataBaseConstants {
+class nDataBaseConstants {
 
     object GUEST{
         const val ID = "guestid"
