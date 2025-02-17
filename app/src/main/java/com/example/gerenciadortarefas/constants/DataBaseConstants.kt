@@ -1,10 +1,10 @@
 package com.example.gerenciadortarefas.constants
 
-class nDataBaseConstants {
+class DataBaseConstants {
 
     object GUEST{
-        const val ID = "guestid"
-        const val TABLE_NAME = "Guest"
+        const val ID = "guestidd"
+        const val TABLE_NAME = "Guestt"
 
         object COLUMNS {
             const val ID = "id"
